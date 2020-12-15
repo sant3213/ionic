@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title> Detalles del sitio </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list lines="full">
+    <ion-card>
+      <ion-item>
+        <h5>Select image</h5>
+        <ion-input type="file" accept="image/*" (change)="onUpload($event)" [(ngModel)]="site.photoURL"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="site">
+        <ion-input required type="text" placeholder="Sitio" [(ngModel)]="site.name"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="site">
+        <ion-input required type="text" placeholder="Descripción" [(ngModel)]="site.description"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="site">
+        <ion-input required type="text" placeholder="Calificación" [(ngModel)]="site.quali"></ion-input>
+      </ion-item>
+    </ion-card>
+  </ion-list>
+  <ion-button expand="full" (click)="saveSite()"> Guardar </ion-button>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" color="danger">
+    <ion-fab-button color="danger" routerLink="/" routerDirection="forward" (click)="onRemove(siteId)">
+      <ion-icon name="trash"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
